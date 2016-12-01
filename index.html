@@ -11,8 +11,10 @@
   <link rel="stylesheet" href="assets/css/section.css">
   <link rel="stylesheet" href="assets/css/demo.css">
   <link rel="stylesheet" href="assets/css/github.css">
+  <link rel="stylesheet" href="assets/css/workspaces.css">
 
   <link rel="import" href="sections/about.html">
+  <link rel="import" href="sections/workspaces/sandbox.html">
   <link rel="import" href="sections/windows/windows.html">
   <link rel="import" href="sections/windows/crash-hang.html">
   <link rel="import" href="sections/menus/menus.html">
@@ -31,9 +33,19 @@
 
   <nav class="nav js-nav">
     <header class="nav-header">
-      <h1 class="nav-title">Electron <strong>API Demos</strong></h1>
+      <h1 class="nav-title">Softplan <strong>Manager</strong></h1>
       <svg class="nav-header-icon"><use xlink:href="assets/img/icons.svg#icon-electron"></use></svg>
     </header>
+
+    <div class="nav-item u-category-workspaces">
+      <h5 class="nav-category">
+        <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
+        Workspaces
+      </h5>
+      <ul class="sandbox-list">
+        <li><button type="button" id="button-DESKTOP-PG5-1-8-12-20-SC" data-section="sandbox" class="nav-button">DESKTOP-PG5-1.8.12-20-SC</button></li>
+      </ul>
+    </div>
 
     <div class="nav-item u-category-windows">
       <h5 class="nav-category">
@@ -106,6 +118,23 @@
     require('./assets/demo-btns')
     require('./assets/code-blocks')
     require('./assets/normalize-shortcuts')
+  </script>
+
+  <script>
+    // List all files in a directory in Node.js recursively in a synchronous fashion
+    var walkSync = function(dir, filelist) {
+      var fs = fs || require('fs'),
+          files = fs.readdirSync(dir);
+      filelist = filelist || [];
+      files.forEach(function(file) {
+        if (fs.statSync(dir + '/' + file).isDirectory()) {
+          filelist.push(file);
+        }
+      });
+      return filelist;
+    };
+    var dir = [];
+    console.log(walkSync('D:\RTC', dir));
   </script>
 </body>
 </html>
