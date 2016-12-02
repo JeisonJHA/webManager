@@ -165,6 +165,7 @@ describe('demo app', function () {
 
   it('does not contain any accessibility warnings or errors', function () {
     return app.client.dismissAboutPage()
+      .auditSectionAccessibility('sandbox')
       .auditSectionAccessibility('windows')
       .auditSectionAccessibility('crash-hang')
       .auditSectionAccessibility('menus')
