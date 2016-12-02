@@ -31,8 +31,16 @@ var walkSync = function(dir, filelist) {
   return filelist;
 };
 
-var dir = [];
-walkSync('e:\\RTC', dir);
+const workspaces = ['e:\\rtc', 'd:\\rtc']
+workspaces.forEach(function(element, index, array) {
+  var dir = [];
+  try {
+    walkSync(element, dir);
+  } catch (error) {
+    console.error(error)
+  }
+})
+
     
 var buttonlist = document.querySelectorAll('.sandbox')
 for (var i = 0; buttonlist[i]; i++) {    
