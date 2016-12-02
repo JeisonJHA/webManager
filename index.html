@@ -42,7 +42,7 @@
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
         Workspaces
       </h5>
-      <ul class="sandbox-list">
+      <ul id="sandbox-list">
         <li><button type="button" id="button-DESKTOP-PG5-1-8-12-20-SC" data-section="sandbox" class="nav-button">DESKTOP-PG5-1.8.12-20-SC</button></li>
       </ul>
     </div>
@@ -118,23 +118,7 @@
     require('./assets/demo-btns')
     require('./assets/code-blocks')
     require('./assets/normalize-shortcuts')
-  </script>
-
-  <script>
-    // List all files in a directory in Node.js recursively in a synchronous fashion
-    var walkSync = function(dir, filelist) {
-      var fs = fs || require('fs'),
-          files = fs.readdirSync(dir);
-      filelist = filelist || [];
-      files.forEach(function(file) {
-        if (fs.statSync(dir + '/' + file).isDirectory()) {
-          filelist.push(file);
-        }
-      });
-      return filelist;
-    };
-    var dir = [];
-    console.log(walkSync('D:\RTC', dir));
+    require('./assets/list-sandboxes.js')
   </script>
 </body>
 </html>

@@ -12,3 +12,7 @@ li {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+button {
+	text-transform: uppercase;
+}
