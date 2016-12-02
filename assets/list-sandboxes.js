@@ -22,7 +22,7 @@ var walkSync = function(dir, filelist) {
       button.type = 'button'
       button.textContent = file
       button.setAttribute('data-section','sandbox')
-      button.setAttribute('data-path',dir_aux)
+      button.setAttribute('data-directory-sandbox',dir_aux)
       button.id = "sandbox-" + i
       node.appendChild(button);                              
       sandboxList.appendChild(node);
@@ -40,12 +40,10 @@ workspaces.forEach(function(element, index, array) {
     console.error(error)
   }
 })
-
-    
+  
 var buttonlist = document.querySelectorAll('.sandbox')
 for (var i = 0; buttonlist[i]; i++) {    
     buttonlist[i].addEventListener('click', function(event){
       console.log(event.target)
-      console.log(app)
     })
 }
