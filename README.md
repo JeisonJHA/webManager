@@ -48,3 +48,11 @@ $ npm run dev
 ## Translations
 
 A Chinese translation of this app is available at [`fuchao2012/zh-cn-Electron-API-Demos`](https://github.com/fuchao2012/zh-cn-Electron-API-Demos). Note: this version is maintained by outside contributors and may not always be in sync with this version.
+
+## Dependencies
+
+Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaScript or the command line.
+[electron-packager](https://github.com/electron-userland/electron-packager)
+
+Rails ActiveRecord inspired for Nodejs.
+[ActiveRecordjs](https://github.com/3kg4kR/active_record)
