@@ -2,6 +2,7 @@ const path = require('path')
 const glob = require('glob')
 const electron = require('electron')
 const autoUpdater = require('./auto-updater')
+const models = require('./app/models');
 
 const BrowserWindow = electron.BrowserWindow
 const app = electron.app
@@ -12,13 +13,13 @@ if (process.mas) app.setName('Electron APIs')
 
 var mainWindow = null
 
-function initialize () {
+function initialize() {
   var shouldQuit = makeSingleInstance()
   if (shouldQuit) return app.quit()
 
   loadDemos()
 
-  function createWindow () {
+  function createWindow() {
     var windowOptions = {
       width: 1080,
       minWidth: 680,
@@ -46,8 +47,11 @@ function initialize () {
   }
 
   app.on('ready', function () {
-    createWindow()
-    autoUpdater.initialize()
+    models.sequelize.sync({ force: true }).then(function () {
+    }).then(function (data) {
+      createWindow()
+      autoUpdater.initialize()
+    });
   })
 
   app.on('window-all-closed', function () {
@@ -70,7 +74,7 @@ function initialize () {
 //
 // Returns true if the current version of the app should quit instead of
 // launching.
-function makeSingleInstance () {
+function makeSingleInstance() {
   if (process.mas) return false
 
   return app.makeSingleInstance(function () {
@@ -82,7 +86,7 @@ function makeSingleInstance () {
 }
 
 // Require each JS file in the main-process dir
-function loadDemos () {
+function loadDemos() {
   var files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
   files.forEach(function (file) {
     require(file)
